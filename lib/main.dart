@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'Screen/home_screen.dart';
+import 'screen/home_screen.dart';
 
 void main() {
  runApp(const GenTrackApp());
