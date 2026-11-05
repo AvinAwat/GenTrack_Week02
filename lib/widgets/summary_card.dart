@@ -21,7 +21,7 @@ class SummaryCard extends StatelessWidget {
       margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
-        color: colors.primaryContainer,
+        color: colors.secondaryContainer,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
@@ -29,7 +29,7 @@ class SummaryCard extends StatelessWidget {
           Icon(
             Icons.account_balance_wallet,
             size: 40,
-            color: colors.onPrimaryContainer,
+            color: colors.onSecondaryContainer,
           ),
           const SizedBox(width: 16),
           Expanded(
@@ -39,20 +39,20 @@ class SummaryCard extends StatelessWidget {
                 Text(
                   'Total paid',
                   style: text.bodyMedium?.copyWith(
-                    color: colors.onPrimaryContainer,
+                    color: colors.onSecondaryContainer,
                   ),
                 ),
                 Text(
                   formatIqd(total),
                   style: text.headlineMedium?.copyWith(
-                    color: colors.onPrimaryContainer,
+                    color: colors.onSecondaryContainer,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
                   '$count payments',
                   style: text.bodySmall?.copyWith(
-                    color: colors.onPrimaryContainer,
+                    color: colors.onSecondaryContainer,
                   ),
                 ),
               ],
