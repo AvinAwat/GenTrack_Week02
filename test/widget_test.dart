@@ -6,8 +6,13 @@ void main() {
     await tester.pumpWidget(const GenTrackApp());
 
     expect(find.text('GenTrack'), findsOneWidget);
-    expect(find.text('Recent Expenses'), findsOneWidget);
-    expect(find.text('See all'), findsOneWidget);
+    expect(find.text('Total paid'), findsOneWidget);
+    expect(find.text('IQD 56,500'), findsOneWidget);
     expect(find.text('4 payments'), findsOneWidget);
+
+    expect(find.text('Ampere fee'), findsOneWidget);
+    expect(find.text('Mains bill'), findsOneWidget);
+    expect(find.text('Diesel'), findsOneWidget);
+    expect(find.text('Electrician'), findsOneWidget);
   });
 }

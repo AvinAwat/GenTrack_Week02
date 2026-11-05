@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gentrack_week02/theme/app_theme.dart';
 import 'screen/home_screen.dart';
 
 void main() {
@@ -13,9 +14,9 @@ class GenTrackApp extends StatelessWidget {
     return MaterialApp(
       title: 'GenTrack',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal),
-      ),
+      theme: AppTheme.light(),
+      darkTheme: AppTheme.dark(),
+      themeMode: ThemeMode.system ,
       home: const HomeScreen(),
     );
 

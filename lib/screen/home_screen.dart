@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:gentrack_week02/models/payment.dart';
-import 'package:gentrack_week02/widgets/expenses_tile.dart';
+import 'package:gentrack_week02/widgets/payment_list.dart';
 import 'package:gentrack_week02/widgets/summary_card.dart';
-import '../models/expenses.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -12,62 +11,45 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('GenTrack'),
-        backgroundColor: Colors.red,
-        foregroundColor: Colors.white,
         actions: [
           IconButton(
             icon: const Icon(Icons.settings),
             onPressed: () {
-              print("Settings tapped");
+              debugPrint("Settings tapped");
             },
           ),
         ],
       ),
-
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SummaryCard(
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final card = SummaryCard(
             total: totalOf(samplePayments),
-            count: samplePayments.length,),
+            count: samplePayments.length,
+          );
 
-         Padding(
-  padding: const EdgeInsets.symmetric(horizontal: 16),
-  child: Row(
-    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-    children: [
-      const Text(
-        'Recent Expenses',
-        style: TextStyle(
-          fontSize: 18,
-          fontWeight: FontWeight.bold,
-        ),
-      ),
-      TextButton(
-        onPressed: () {
-          print('See all tapped');
-        },
-        child: const Text('See all'),
-      ),
-    ],
-  ),
-),
-const SizedBox(height: 8,),
+          final list = PaymentList(payments: samplePayments);
 
-          Expanded(
-            child: ListView(
+          if (constraints.maxWidth < 600) {
+            return Column(
               children: [
-                for (final e in sampleExpenses)
-                  ExpensesTile(expense: e),
+                card,
+                Expanded(child: list),
               ],
-            ),
-          ),
-        ],
-      ),
+            );
+          }
 
+          return Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SizedBox(width: 360, child: card),
+              Expanded(child: list),
+            ],
+          );
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          print('Add tapped');
+          debugPrint('Add tapped');
         },
         child: const Icon(Icons.add),
       ),
